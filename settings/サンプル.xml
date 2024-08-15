@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TabModelDto xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Header>サンプル</Header>
+  <Contents>
+    <FieldModelDto>
+      <No>1</No>
+      <Name>番号</Name>
+      <Digit>1</Digit>
+    </FieldModelDto>
+    <FieldModelDto>
+      <No>2</No>
+      <Name>名前</Name>
+      <Digit>10</Digit>
+    </FieldModelDto>
+    <FieldModelDto>
+      <No>3</No>
+      <Name>生年月日</Name>
+      <Digit>8</Digit>
+    </FieldModelDto>
+  </Contents>
+</TabModelDto>
