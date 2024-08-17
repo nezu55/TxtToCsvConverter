@@ -16,8 +16,8 @@ internal class MainWindowViewModel : INotifyPropertyChanged
 {
     private const string TempFilePath = @"..\..\..\..\..\temp\input.txt";
     private const string SettingFilePath = @"..\..\..\..\..\Settings\";
-    private string srcFilePath = @"C:\sample.txt";
-    private string dstFilePath = @"C:\output";
+    private string srcFilePath = @"..\..\..\..\..\input/sample.txt";
+    private string dstFilePath = @"..\..\..\..\..\output";
     private ObservableCollection<TabModel> tabItems = [];
     private int selectedIndex = 0;
 

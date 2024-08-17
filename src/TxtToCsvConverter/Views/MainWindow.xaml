@@ -7,7 +7,7 @@
         xmlns:vw="clr-namespace:TxtToCsvConverter.Views"
         xmlns:vm="clr-namespace:TxtToCsvConverter.ViewModels"
         mc:Ignorable="d"
-        Title="TXT To CSV Converter" Height="768" Width="1366"
+        Title="TXT To CSV Converter" Height="700" Width="1122"
         Background="#FAFAFA"
         WindowStartupLocation="CenterScreen"
         d:DataContext="{d:DesignInstance Type=vm:MainWindowViewModel, IsDesignTimeCreatable=True}">
