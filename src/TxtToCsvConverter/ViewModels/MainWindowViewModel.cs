@@ -14,7 +14,8 @@ namespace TxtToCsvConverter.ViewModels;
 /// </summary>
 internal class MainWindowViewModel : INotifyPropertyChanged
 {
-    private const string TempFilePath = @"..\..\..\..\..\temp\input.txt";
+    private const string TempDirectory = @"..\..\..\..\..\temp\";
+    private const string TempFilePath = TempDirectory + @"input.txt";
     private const string SettingFilePath = @"..\..\..\..\..\Settings\";
     private string srcFilePath = @"..\..\..\..\..\input/sample.txt";
     private string dstFilePath = @"..\..\..\..\..\output";
@@ -273,7 +274,7 @@ internal class MainWindowViewModel : INotifyPropertyChanged
         string dstFileName = this.GetDstFileName();
 
         // エンコードが UTF-8 でない場合、UTF-8で保存された一時ファイルを作成する
-        if (!this.PrepareTempFile(srcFileName))
+        if (!this.PrepareTempFile())
         {
             return "一時ファイルの作成に失敗しました。";
         }
@@ -348,14 +349,14 @@ internal class MainWindowViewModel : INotifyPropertyChanged
         return dstFileName;
     }
 
-    private bool PrepareTempFile(string srcFileName)
+    private bool PrepareTempFile()
     {
         if (this.SelectedEncode != 1)
         {
             return true; // 一時ファイルの準備は不要
         }
 
-        return this.CreateTempFile(srcFileName);
+        return this.CreateTempFile();
     }
 
     private List<KeyValuePair<string, int>> GetFieldDefinitions(int selectedIndex)
@@ -422,13 +423,13 @@ internal class MainWindowViewModel : INotifyPropertyChanged
 
     private void CleanupTempFile(string srcFileName)
     {
-        if (srcFileName != this.srcFilePath)
+        if (this.srcFilePath != srcFileName)
         {
-            File.Delete(srcFileName);
+            Directory.Delete(TempDirectory, true);
         }
     }
 
-    private bool CreateTempFile(string srcFileName)
+    private bool CreateTempFile()
     {
         try
         {
@@ -445,7 +446,8 @@ internal class MainWindowViewModel : INotifyPropertyChanged
                 fileContent = sr.ReadToEnd();
             }
 
-            using (StreamWriter sw = new(srcFileName, false, new UTF8Encoding(false)))
+            Directory.CreateDirectory(TempDirectory);
+            using (StreamWriter sw = new(TempFilePath, false, new UTF8Encoding(false)))
             {
                 sw.Write(fileContent);
             }
